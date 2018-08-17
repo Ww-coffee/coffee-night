@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('admin/public/login','Admin\PublicController@login');
+Route::get('admin/public/login','Admin\PublicController@login')->name("admin.login");
