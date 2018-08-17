@@ -10,18 +10,8 @@
         "caouecs/laravel-lang": "~3.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-      "MINIMUM-STABILITY":"dev",
         "mews/captcha": "^2.2"
     },
-
-
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
-    },
-
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
@@ -40,7 +30,6 @@
             "Tests\\": "tests/"
         }
     },
-
     "scripts": {
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -63,4 +52,3 @@
         "optimize-autoloader": true
     }
 }
-

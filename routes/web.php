@@ -11,4 +11,15 @@
 |
 */
 
-Route::get('admin/public/login','Admin\PublicController@login')->name("admin.login");
+
+Route::get('admin/public/login','PublicController@login')->name('public.login');
+
+//登录表单提交
+Route::post('admin/public/check','PublicController@check')->name('check_login');
+
+
+
+
+
+
+
