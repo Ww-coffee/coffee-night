@@ -18,6 +18,10 @@ Route::get('admin/public/login','PublicController@login')->name('public.login');
 Route::post('admin/public/check','PublicController@check')->name('check_login');
 
 
+    Route::get('admin/index/index', 'IndexController@index')->name('dashboard');
+    Route::get('admin/index/welcome', 'IndexController@welcome')->name('welcome');
+    Route::get('admin/index/logout', 'IndexController@logout')->name('logout');
+
 
 
 
