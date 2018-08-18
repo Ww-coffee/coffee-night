@@ -32,19 +32,17 @@ Route::any('admin/user/update','UserController@update')->name('user_update');
 Route::get('admin/user/delete','UserController@delete')->name('user_delete');
 
 //添加运动员
-<<<<<<< HEAD
 Route::any('admin/user/add','UserController@add')->name('useradd');
-=======
-Route::any('admin/user/add','UserController@add')->name('user_add');
 
->>>>>>> 643c7dfcf1c0cc3cff9db20990baa01e328b4c00
 
 
 
 //比赛列表
 Route::get('admin/game/index','GameController@index')->name('gameindex');
 //添加比赛
-Route::any('admin/game/add','GameController@add')->name('gameadd');
+Route::post('admin/game/add','GameController@add')->name('gameadd');
+
+
 //修改比赛
 Route::any('admin/game/edit','GameController@edit')->name('gameedit');
 //删除比赛
@@ -55,8 +53,5 @@ Route::get('admin/data/index','DataController@index')->name('updown');
 Route::get('admin/downdata','DataController@down')->name('downdata');
 // //数据导入：上传数据
 Route::get('admin/updata','DataController@up')->name('updata');
-
-
-
 
 

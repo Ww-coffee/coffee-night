@@ -89,16 +89,19 @@ class UserController extends Controller
             $tex = pathinfo($array['name'],PATHINFO_EXTENSION);
             if (!in_array($tex,$arr)){
                 echo "您上传的不是图片，请重新上传！";
+                die();
             }
 
              //判断图片上传是否异常
             if ($array['error'] != 0){
                 echo "图片上传异常！请重新上传。";
+                die();
             }
 
             //判断图片大小
             if ($array['size']>1024*1024){
                 echo $array['name'] ."这张图片太大了，请重新选择！";
+                die();
             }
 
             //移动文件
