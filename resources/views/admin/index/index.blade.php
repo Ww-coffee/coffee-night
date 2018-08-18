@@ -73,10 +73,11 @@
 <aside class="Hui-aside">
 	<div class="menu_dropdown bk_2">
 		<dl id="menu-article">
-			<dt><i class="Hui-iconfont">&#xe616;</i> 运动员列表<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe616;</i> 运动员信息<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="article-list.html" data-title="添加运动员" href="javascript:void(0)">添加运动员</a></li>
+					<li><a data-href="{{ route('userindex') }}" data-title="运动员列表" href="javascript:void(0)">运动员列表</a></li>
+					<li><a data-href="{{ route('user_add') }}" data-title="添加运动员" href="javascript:void(0)">添加运动员</a></li>
 			</ul>
 		</dd>
 	</dl>
