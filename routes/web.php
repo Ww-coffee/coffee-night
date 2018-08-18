@@ -26,8 +26,14 @@ Route::get('admin/index/logout', 'IndexController@logout')->name('logout');
 
 //运动员列表
 Route::get('admin/user/index','UserController@index')->name('userindex');
+//信息修改
+Route::any('admin/user/update','UserController@update')->name('user_update');
+//删除信息
+Route::get('admin/user/delete','UserController@delete')->name('user_delete');
+
 //添加运动员
-Route::post('admin/user/add','UserController@add')->name('useradd');
+Route::any('admin/user/add','UserController@add')->name('user_add');
+
 
 
 
