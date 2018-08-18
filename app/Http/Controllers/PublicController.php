@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+//引入Auth;
 use Auth;
 class PublicController extends Controller
 {
@@ -25,22 +26,21 @@ class PublicController extends Controller
             'captcha.captcha'  => '验证码错误'
         ]);
 
-        $data = $request -> only(['username','password']);
-        if (!empty($data)){
-            return redirect(route('dashboard'));
-        }else{
-            echo "失败";
-        }
+        // $data = $request -> only(['username','password']);
+        // if (!empty($data)){
+        //     return redirect(route('public.login'));
+        // }else{
+        //     echo "失败";
+        // }
 
 
-//        //开始进行身份进行验证
-//        $data = $request -> only(['username','password']);
-//        $data['show'] = '1';//2表示状态为正常的账号
-//        //Auth认证
-//        if (Auth::guard() -> attempt($data,$request -> get('online'))){
-//            return redirect(route('dashboard'));
-//        }else{
-//            return redirect(route('public.login')) -> withErrors(['error' => '用户名或密码错误！']);
-//        }
+         //开始进行身份进行验证
+        //   $data = $request -> only(['username','password']);
+        //  //Auth认证
+        //   if (Auth::guard('admin') -> attempt($data)){
+        //       return redirect(route('dashboard'));  
+        //   }else{
+        //     return redirect(route('public.login')) -> withErrors(['error' => '用户名或密码错误！']);
+        //  }
     }
 }

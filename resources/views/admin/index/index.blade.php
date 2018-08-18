@@ -84,7 +84,8 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 比赛列表<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="picture-list.html" data-title="添加比赛" href="javascript:void(0)">添加比赛</a></li>
+				    <li><a data-href="{{route('gameindex')}}" data-title="比赛列表" href="javascript:void(0)">比赛列表</a></li>
+					<li><a data-href="{{route('gameadd')}}" data-title="添加比赛" href="javascript:void(0)">添加比赛</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -92,11 +93,11 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i>比赛成绩管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="product-brand.html" data-title="比赛数据批量上传" href="javascript:void(0)">比赛数据批量上传</a></li>
+					<li><a data-href="{{route('updown')}}" data-title="比赛数据批量上传" href="javascript:void(0)">比赛数据批量上传</a></li>
 					<li><a data-href="product-category.html" data-title="比赛数据添加" href="javascript:void(0)">比赛数据添加</a></li>
 					<li><a data-href="product-list.html" data-title="比赛数据列表" href="javascript:void(0)">比赛数据列表</a></li>
 					<li><a data-href="product-list.html" data-title="比赛场次" href="javascript:void(0)">比赛场次</a></li>
-			</ul>
+			   </ul>
 		</dd>
 	</dl>
 
