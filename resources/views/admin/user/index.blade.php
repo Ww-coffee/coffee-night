@@ -26,13 +26,10 @@
 <div class="pd-20">
   <div class="text-c"> 日期范围：
     <input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin" class="input-text Wdate" style="width:120px;">
-    -
     <input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d'})" id="datemax" class="input-text Wdate" style="width:120px;">
     <input type="text" class="input-text" style="width:250px" placeholder="输入运动员名称" id="" name=""><button type="submit" class="btn btn-success" id="" name=""><i class="icon-search"></i> 搜用户</button>
-
   </div>
   <div class="cl pd-5 bg-1 bk-gray mt-20">
-
     <span class="r">共有数据：<strong>{{ count($data) }}</strong> 条</span>
   </div>
   <table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -47,7 +44,7 @@
         <th width="80">直横排</th>
         <th width="80">打法</th>
         <th width="200">照片</th>
-        <th width="200"></th>
+        <th width="200">操作</th>
       </tr>
     </thead>
     <tbody>
@@ -66,7 +63,7 @@
           <a href="{{ route('user_update') }}?id={{ $val -> id }}"><span><input type="button" class="btn btn-success radius" value="编辑"></span></a>
             <a href="{{ route('user_delete') }}?id={{ $val ->id }}"><span><input type="button" class="btn btn-danger radius" value="删除"></span></a>
         </td>
-        <td><input type="hidden" name="ac" value="upload"></td>
+        <input type="hidden" name="ac" value="upload">
       </tr>
         @endforeach
     </tbody>
@@ -85,27 +82,20 @@
 <script type="text/javascript" src="/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="/admin/lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-window.onload = (function(){
-    // optional set
-    pageNav.pre="&lt;上一页";
-    pageNav.next="下一页&gt;";
-    // p,当前页码,pn,总页面
-    pageNav.fn = function(p,pn){$("#pageinfo").text("当前页:"+p+" 总页: "+pn);};
-    //重写分页状态,跳到第三页,总页33页
-    pageNav.go(1,13);
-});
-$('.table-sort').dataTable({
-	"lengthMenu":false,//显示数量选择 
-	"bFilter": false,//过滤功能
-	"bPaginate": false,//翻页信息
-	"bInfo": false,//数量信息
-	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
-	"bStateSave": true,//状态保存
-	"aoColumnDefs": [
-	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-	  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
-	]
-});
+    $(function(){
+        $('.table-sort').dataTable({
+            "aaSorting": [[ 0, "desc" ]],//默认第几个排序
+            //"bStateSave": true,//状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+               {"orderable":false,"aTargets":[1,2,3,8]}// 制定列不参与排序
+            ]
+        });
+
+
+    });
+
+
 </script>
 </body>
 </html>

@@ -28,7 +28,7 @@
 <div class="page-container">
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
 		<a href="javascript:;" onclick="" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe641;</i> 导出试题</a>
-		<a href="javascript:;" onclick="q','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe642;</i> 导入试题</a>
+		<a href="javascript:;" onclick="('q','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe642;</i> 导入试题</a>
     </div>
 	<form class="form form-horizontal" id="form-admin-add" method="post" action="{{route('gameadd')}}">
 	<div class="row cl">

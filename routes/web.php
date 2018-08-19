@@ -54,8 +54,12 @@ Route::get('admin/updata','DataController@up')->name('updata');
 
 
 
-//给前台返回数据接口
+//添加运动员
 Route::any('admin/userdata/uadd','UdController@uadd')->name('usdata_uadd');
+//删除运动员
+Route::get('admin/userdata/delete','Udcontroller@delete')->name('usdata_delete');
+//修改运动员
+Route::any('admin/userdata/update','Udcontroller@update')->name('usdata_update');
 //比赛成绩添加（场）
 Route::any('admin/gradedata/gadd','UdController@gadd')->name('usdata_gadd');
 
