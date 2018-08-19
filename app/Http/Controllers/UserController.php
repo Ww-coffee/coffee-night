@@ -30,7 +30,7 @@ class UserController extends Controller
             $id2 = substr("$id1",'45');
 
             //获取数据，筛选
-            $data = Input::except(['file']);
+            $data = Input::all();
             unset($data['_token']);
             $data['add_time'] = date('Y-m-d H:i:s');
 
@@ -40,6 +40,38 @@ class UserController extends Controller
             }else{
                 $data['sex'] = '女';
             }
+
+            //判断图片是否满足要求
+            $array = $_FILES['filename'];
+
+            //判断是不是图片
+            $arr = array('jpg','png','jpeg');
+            $tex = pathinfo($array['name'],PATHINFO_EXTENSION);
+            if (!in_array($tex,$arr)){
+                echo "您上传的不是图片，请重新上传！";
+                die();
+            }
+
+            //判断图片上传是否异常
+            if ($array['error'] != 0){
+                echo "图片上传异常！请重新上传。";
+                die();
+            }
+
+            //判断图片大小
+            if ($array['size']>1024*1024){
+                echo $array['name'] ."这张图片太大了，请重新选择！";
+                die();
+            }
+
+            //移动文件
+            $filename = "./img/".uniqid('s_',true).'.'.$tex;
+            $tmp = $_FILES['filename']['tmp_name'];
+            move_uploaded_file($tmp,$filename);
+            $filename = ltrim($filename,'.');
+            unset($data['filename']);
+            $data['filename']=$filename;
+            echo "文件{$array['name']}上传成功！";
 
             $result = DB::table('user')->where('id',$id2)->update($data);
 

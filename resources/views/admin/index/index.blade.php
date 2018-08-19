@@ -96,8 +96,8 @@
 				<ul>
 					<li><a data-href="{{route('updown')}}" data-title="比赛数据批量上传" href="javascript:void(0)">比赛数据批量上传</a></li>
 					<li><a data-href="product-category.html" data-title="比赛数据添加" href="javascript:void(0)">比赛数据添加</a></li>
-					<li><a data-href="product-list.html" data-title="比赛数据列表" href="javascript:void(0)">比赛数据列表</a></li>
-					<li><a data-href="product-list.html" data-title="比赛场次" href="javascript:void(0)">比赛场次</a></li>
+					<li><a data-href="{{ route('usdata_uadd') }}" data-title="比赛数据列表" href="javascript:void(0)">比赛数据列表</a></li>
+					<li><a data-href="{{ route('usdata_gadd') }}" data-title="比赛场次" href="javascript:void(0)">比赛场次</a></li>
 			   </ul>
 		</dd>
 	</dl>

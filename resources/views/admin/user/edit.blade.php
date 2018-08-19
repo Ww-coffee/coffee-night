@@ -73,12 +73,12 @@
           </tr>
           <tr>
             <th class="text-r">头像：</th>
-            <td><input type="file"  class="" name="" multiple></td>
+            <td><input type="file"  class="" name="filename" multiple></td>
           </tr>
           <tr>
             <th></th>
             <td><button class="btn btn-success radius" type="submit"><i class="icon-ok"></i> 确定</button> <button class="btn btn-warning radius" type="reset">重置</button></td>
-            <td><input type="hidden" name="ac" value="upload"></td>
+            <td><input type="hidden" name="" value=""></td>
           </tr>
             @endforeach
         {{ csrf_field() }}

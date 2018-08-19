@@ -26,21 +26,22 @@ class PublicController extends Controller
             'captcha.captcha'  => '验证码错误'
         ]);
 
-        // $data = $request -> only(['username','password']);
-        // if (!empty($data)){
-        //     return redirect(route('public.login'));
-        // }else{
-        //     echo "失败";
-        // }
+        //没有做用户名和密码验证，直接跳转
+         $data = $request -> only(['username','password']);
+         if (!empty($data)){
+             return redirect(route('dashboard'));
+         }else{
+             echo "失败";
+         }
 
 
-         //开始进行身份进行验证
-        //   $data = $request -> only(['username','password']);
-        //  //Auth认证
-        //   if (Auth::guard('admin') -> attempt($data)){
-        //       return redirect(route('dashboard'));  
-        //   }else{
-        //     return redirect(route('public.login')) -> withErrors(['error' => '用户名或密码错误！']);
-        //  }
+////         开始进行身份进行验证
+//           $data = $request -> only(['username','password']);
+//          //Auth认证
+//           if (Auth::guard('admin') -> attempt($data)){
+//               return redirect(route('dashboard'));
+//           }else{
+//             return redirect(route('public.login')) -> withErrors(['error' => '用户名或密码错误！']);
+//          }
     }
 }
