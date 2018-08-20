@@ -51,7 +51,10 @@ Route::get('admin/downdata','DataController@down')->name('downdata');
 // //数据导入：上传数据
 Route::get('admin/updata','DataController@up')->name('updata');
 
-
+//使用webuploader提交文件
+Route::post('admin/uploader/webuploader','UploaderController@webuploader')->name('webuploader');
+//比赛数据添加(局)
+Route::any('admin/dataadd','DataController@add')->name('dataadd');
 
 
 //添加运动员
@@ -70,3 +73,6 @@ Route::post('admin/uploader/webuploader','UploaderController@webuploader')->name
 
 //比赛数据添加(局)
 Route::any('admin/dataadd','DataController@add')->name('dataadd');
+
+
+
