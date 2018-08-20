@@ -30,7 +30,7 @@
 </head>
 <body>
 <article class="page-container">
-	<form action="{{ route('usdata_uadd') }}" method="post" class="form form-horizontal" id="form-admin-role-add" enctype="multipart/form-data">
+	<form action="{{ route('usdata_gadd') }}" method="post" class="form form-horizontal" id="form-admin-role-add" name="gadd">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>比赛名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -38,15 +38,8 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3">运动员：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="姓名：" id="" name="user_name" style="width: 200px;">
-			</div>
-		</div>
-		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<button type="submit" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i><a
-							data-href="{{route('usdata_uadd')}}"></a> 确定</button>
+				<button type="submit" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
 				<button type="reset" class="btn btn-primary radius" >重置</button>
 			</div>
 		</div>
@@ -55,28 +48,32 @@
 		<table class="table table-border table-bordered table-hover table-bg table-sort" style="margin-top: 20px">
 			<thead>
 			<tr class="text-c">
-				<th width="50">ID</th>
-				<th width="100">局数</th>
-				<th width="40">得分</th>
-				<th width="40">失分</th>
-				<th width="40">发接轮次</th>
-				<th width="80">拍数</th>
-				<th width="80">手段</th>
-				<th width="40">得失分</th>
-				<th width="150">操作</th>
+				<th width="50">序号</th>
+				<th width="80">比赛时间</th>
+				<th width="80">比赛名称</th>
+				<th width="80">比赛项目</th>
+				<th width="80">比赛阶段</th>
+				<th width="80">运动员A</th>
+				<th width="80">运动员B</th>
+				<th width="80">大比分</th>
+				<th width="80">小比分</th>
+				<th width="80">状态</th>
+				<th width="150"></th>
 			</tr>
 			</thead>
 			<tbody>
 			@foreach($data as $val)
 			<tr class="text-c">
 				<td>{{ $val ->id }}</td>
-				<td>{{ $val -> office_name }}</td>
-				<td>{{ $val -> score_first }}</td>
-				<td>{{ $val -> score_last }}</td>
-				<td>{{ $val -> send }}</td>
-				<td>{{ $val -> bat_number }}</td>
-				<td>{{ $val -> tool}}</td>
-				<td>{{ $val -> get_lose}}</td>
+				<td>{{ $val -> game_date }}</td>
+				<td>{{ $val -> game_name }}</td>
+				<td>{{ $val -> game_project }}</td>
+				<td>{{ $val -> game_stage }}</td>
+				<td>{{ $val -> user_name }}</td>
+				<td>{{ $val -> user_name }}</td>
+				<td>{{ $val -> big_left}}</td>
+				<td>{{ $val -> big_right}}</td>
+				<td>{{ $val -> show }}</td>
 				<td>
 					<a href="{{ route('usdata_update') }}?id={{ $val -> id }}"><input type="button" class="btn btn-warning radius" value="修改"></a>
 					<a href="{{ route('usdata_delete') }}?id={{ $val -> id }}"><input type="button" class="btn btn-danger radius" value="删除"></a>
@@ -115,16 +112,12 @@
         });
         $("#form-admin-role-add").validate({
             rules:{
-                user_name:{
-                    required:true,
-                    minlength:4,
-                    maxlength:40
-                },
                 game_name:{
                     required:true,
                     minlength:4,
                     maxlength:40
                 },
+
             },
             onkeyup:false,
             focusCleanup:true,
@@ -132,7 +125,7 @@
             submitHandler:function(form){
                 $(form).ajaxSubmit({
                     type: 'post',
-                    url: "" ,	//提交给自己，可以不写地址
+                    url: "route('usdata_gadd')" ,	//提交给自己，可以不写地址
                     success: function(data){
                         // 判断是否成功
                         if(data.code == '0'){

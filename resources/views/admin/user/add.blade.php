@@ -22,7 +22,7 @@
 <body>
 <div class="pd-20">
   <div class="Huiform">
-    <form action="{{ route('user_add') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('user_add') }}" method="post" enctype="multipart/form-data" id="from-add-data">
       <table class="table table-bg">
         <tbody>
           <tr>
@@ -80,37 +80,52 @@
 <script type="text/javascript" src="js/H-ui.js"></script> 
 <script type="text/javascript" src="js/H-ui.admin.js"></script>
 <script type="text/javascript" src="/admin/webuploader-0.1.5/webuploader.js"></script>
+<script type="text/javascript" src="/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script src="/admin/lib/createXHR.js"></script>
-<script>
-    // onkeyup: false,
-    //     focusCleanup: true,
-    //     success: "valid",
-    //     submitHandler: function(form) {
-    //     $(form).ajaxSubmit({
-    //         type: 'post',
-    //         url: "" ,	//提交给当前地址
-    //         success: function(data){
-    //             //判断返回值code
-    //             if(data.code == '0'){
-    //                 //成功
-    //                 layer.msg(data.msg,{icon:1,time:2000},function(){
-    //                     var index = parent.layer.getFrameIndex(window.name);
-    //                     // parent.$('.btn-refresh').click();
-    //                     parent.location.href = parent.location.href;
-    //                     parent.layer.close(index);
-    //                 });
-    //             }else{
-    //                 //失败
-    //                 layer.msg(data.msg,{icon:5,time:2000});
-    //             }
-    //         },
-    //         error: function(XmlHttpRequest, textStatus, errorThrown){
-    //             layer.msg('error!',{icon:5,time:2000});
-    //         }
-    //     });
-    // }
-</script>
+
 <script type="text/javascript">
+  //引用laravel框架自带js判断输入框内容是否合法
+
+  $("#from-add-data").validate({
+      rules:{
+          user_name:{
+              required:true,
+              minlength:4,
+              maxlength:40
+          },
+
+      },
+      onkeyup:false,
+      focusCleanup:true,
+      success:"valid",
+      submitHandler:function(form){
+          $(form).ajaxSubmit({
+              type: 'post',
+              url: "" ,	//提交给自己，可以不写地址
+              success: function(data){
+                  // 判断是否成功
+                  if(data.code == '0'){
+                      layer.msg(data.msg,{icon:1,time:2000},function(){
+                          // 获取当前弹窗的索引（下标）
+                          var index = parent.layer.getFrameIndex(window.name);
+                          // parent.$('.btn-refresh').click();
+                          parent.location.href = parent.location.href;
+                          parent.layer.close(index);
+                      });
+                  }else{
+                      layer.msg(data.msg,{icon:2,time:2000});
+                  }
+              },
+              error: function(XmlHttpRequest, textStatus, errorThrown){
+                  layer.msg('error!',{icon:1,time:1000});
+              }
+          });
+      }
+  });
+
+
+
+
 $(".Huiform").Validform(); 
 </script>
 <script>

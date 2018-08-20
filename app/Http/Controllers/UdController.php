@@ -30,7 +30,7 @@ class UdController extends Controller
             return view('admin/data/uadd',compact('data'));
         }
     }
-    //删除方法
+    //比赛信息删除方法
     public function delete(){
        $id = Input::get('id');
        $data = DB::table('game_data')->where('id',$id)->delete();
@@ -42,8 +42,41 @@ class UdController extends Controller
        return response() -> json($response);
     }
 
-    //更新方法
+    //比赛信息更新方法
     public function update(){
+        echo "暂无更新！";
+    }
+
+
+    //比赛场次添加
+    public function gadd(Request $request){
+        if (Input::method() == 'post'){
+            //post提交
+            $data = Input::all();
+            unset($data['_token']);
+            echo $data;
+            die();
+
+            if ($data){
+                $response = [ 'code' => '0', 'msg' => '添加成功!'];
+            }else{
+                $response = [ 'code' => '1', 'msg' => '添加失败!'];
+            }
+            return response() -> json($response);
+        }else{
+            $data = DB::select('
+                select a.id,a.game_date,a.game_name,a.game_project,a.game_stage,b.user_name,b.user_name,c.big_left,c.big_right ,a.show
+                from message as a inner join user as b on a.id = b.id inner join score as c on a.id = c.id;');
+            foreach ($data as $key => $vel){
+                if ($vel -> show == 1){
+                    $data[$key] -> show = '以上线';
+                }else{
+                    $data[$key] -> show = '以下线';
+                }
+            }
+
+            return view('admin/data/gadd',compact('data'));
+        }
 
     }
 }

@@ -64,3 +64,9 @@ Route::any('admin/userdata/update','Udcontroller@update')->name('usdata_update')
 Route::any('admin/gradedata/gadd','UdController@gadd')->name('usdata_gadd');
 
 
+
+//使用webuploader提交文件
+Route::post('admin/uploader/webuploader','UploaderController@webuploader')->name('webuploader');
+
+//比赛数据添加(局)
+Route::any('admin/dataadd','DataController@add')->name('dataadd');
