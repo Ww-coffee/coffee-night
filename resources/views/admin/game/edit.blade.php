@@ -75,16 +75,8 @@
 			<select name="user_b" id="user_b"  class="input-text">
 			  @foreach($data2 as $val2)
 			     {{-- 判断当前运动员信息 --}}
-			     {{-- @if($val2->id==$data->user_b)
+			     @if($val2->id==$data->user_b)
 				    <option value="{{$data->user_b}}" selected>{{$data->nameB}}</option>
-				 @else
-			        <option value="{{$val2->id}}" >{{$val2->user_name}}</option>
-				 @endif --}}
-				
-				<option value="{{$data->user_b}}"
-				     @if($val2->id==$data->user_b)
-				     selected
-					 >{{$data->nameB}}</option>
 				 @else
 			        <option value="{{$val2->id}}" >{{$val2->user_name}}</option>
 				 @endif

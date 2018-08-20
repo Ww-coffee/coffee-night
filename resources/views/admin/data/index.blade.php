@@ -24,31 +24,48 @@
 <title>添加数据</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>比赛数据批量上传<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i>比赛成绩管理<span class="c-gray en">&gt;</span>比赛数据批量上传<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
-		<a href="javascript:;" onclick="" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe641;</i> 导出试题</a>
-		<a href="javascript:;" onclick="q','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe642;</i> 导入试题</a>
-    </div>
 	<form class="form form-horizontal" id="form-admin-add" method="post" action="{{route('gameadd')}}">
+	  <div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>下载模板：</label>
+            <span class="btn btn-success" id="downfile" onclick="data_export()"><i class="Hui-iconfont">&#xe642;</i>下载</span>
+     </div>
+	 {{-- 添加csrf验证 --}}
+	 {{csrf_field()}}
+	 <div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>运动员：</label>
+		<div class="formControls col-xs-7 col-sm-7">
+            <select name="user_name" id="user_name"  placeholder="请选择" class="input-text">
+			        @foreach($userdata as $val)
+				    <option value="{{$val->id}}">{{$val->user_name}}</option>
+					@endforeach
+			</select>
+		</div>
+	</div>
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>比赛名称：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" value="" placeholder="请输入比赛名称" id="game_name" name="game_name">
+		<div class="formControls col-xs-7 col-sm-7">
+            <select name="game_name" id="game_name"  placeholder="请选择" class="input-text">
+				     @foreach($messdata as $val)
+				     <option value="{{$val->id}}">{{$val->game_name}}</option>
+					 @endforeach
+			</select>
 		</div>
 	</div>
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>比赛日期：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="date" class="input-text" value=""  id="game_date" name="game_date">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>数据上传：</label>
+            <span class="btn btn-success" id="uploadfile" onclick="data_import('导入数据','{{route('updata')}}','800','500')"><i class="Hui-iconfont">&#xe642;</i>上传</span>
+    </div>
+	<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+	{{-- <div class="row cl">
+		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+			<input class="btn btn-success radius" type="submit" value="&nbsp;&nbsp;立即提交&nbsp;&nbsp;">
+			<input class="btn btn-default radius" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
+			<input type="hidden" id="id" name="id" value="">
 		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">比赛时间：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="time" class="input-text" value=""  id="game_time" name="game_time">
-		</div>
-	</div>
+	</div> --}}
+	</form>
 </div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/admin/lib/jquery/1.9.1/jquery.min.js"></script> 
@@ -69,6 +86,15 @@
 	w		弹出层宽度（缺省调默认值）
 	h		弹出层高度（缺省调默认值）
 */
+//数据导出：数据模板下载
+function data_export(){
+	// 只需要将地址跳转到导出页面即可
+	location.href = "{{route('downdata')}}";
+}
+//数据导入：数据批量导入
+function data_import(title,url,w,h){
+	layer_show(title,url,w,h);
+}
 // jQuery页面载入事件
 $(function(){
 	// dt初始化

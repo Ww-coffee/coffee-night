@@ -27,7 +27,8 @@
         <tbody>
           <tr>
             <th width="100" class="text-r"><span class="c-red">*</span> 运动员姓名：</th>
-            <td><input type="text" style="width:200px" class="input-text" value="" placeholder="" id="user-name" name="user_name" datatype="*2-16" nullmsg="用户名不能为空"></td>
+            <td>
+            <input type="text" style="width:200px" class="input-text" value="" placeholder="" id="user-name" name="user_name" datatype="*2-16" nullmsg="用户名不能为空"></td>
           </tr>
           <tr>
             <th class="text-r"><span class="c-red">*</span> 性别：</th>

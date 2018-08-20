@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 class PublicController extends Controller
 {
-        public function login(){
+    public function login(){
         return view('admin.public.login');
     }
     //登录验证方法
@@ -17,7 +17,7 @@ class PublicController extends Controller
         $this -> validate($request,[
             //验证规则 '字段name值'=>'规则1|规则2...
             'username' => 'required|min:3|max:20',
-            'password' => 'required|min:6',
+            'userpwd' => 'required|min:6',
             'captcha'  => 'required|size:5|captcha'
         ],[
             //针对没有翻译的错误提示
@@ -25,22 +25,5 @@ class PublicController extends Controller
             'captcha.size'     => '验证码长度必须是5位',
             'captcha.captcha'  => '验证码错误'
         ]);
-
-        // $data = $request -> only(['username','password']);
-        // if (!empty($data)){
-        //     return redirect(route('public.login'));
-        // }else{
-        //     echo "失败";
-        // }
-
-
-         //开始进行身份进行验证
-        //   $data = $request -> only(['username','password']);
-        //  //Auth认证
-        //   if (Auth::guard('admin') -> attempt($data)){
-        //       return redirect(route('dashboard'));  
-        //   }else{
-        //     return redirect(route('public.login')) -> withErrors(['error' => '用户名或密码错误！']);
-        //  }
     }
 }

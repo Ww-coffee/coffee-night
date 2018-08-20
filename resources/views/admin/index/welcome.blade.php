@@ -92,7 +92,7 @@
 		<tbody>
 			<tr>
 				<th width="30%">服务器计算机名</th>
-				<td><span id="lbServerName">http://127.0.0.1/</span></td>
+				<td><span id="lbServerName"></span></td>
 			</tr>
 			<tr>
 				<td>服务器IP地址</td>

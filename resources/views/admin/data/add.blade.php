@@ -30,84 +30,100 @@
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>比赛名称：</label>
 		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" value="" placeholder="请输入比赛名称" id="game_name" name="game_name">
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>比赛日期：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="date" class="input-text" value=""  id="game_date" name="game_date">
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">比赛时间：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="time" class="input-text" value=""  id="game_time" name="game_time">
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>比赛阶段：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" value="" placeholder="请输入" id="game_stage" name="game_stage">
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>运动员A：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			{{-- <input type="text" class="input-text" value="" placeholder="请选择" id="user_a" name="user_a"> --}}
-            <select name="user_a" id="user_a"  placeholder="请选择" class="input-text">
-			  <option value="">请选择或输入</option>
-			  @foreach($data as $val)
-			  <option value="{{$val->id}}">{{$val->user_name}}</option>
+			<select name="game_name" id="game_name"  placeholder="请选择" class="input-text">
+			  <option value="">请选择</option>
+			  @foreach($mess as $val)
+			    <option value="{{$val->game_name}}">{{$val->game_name}}</option>
 			  @endforeach
 			</select>
 		</div>
 	</div>
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>运动员B：</label>
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>运动员：</label>
 		<div class="formControls col-xs-8 col-sm-9">
-			{{-- <input type="text" class="input-text" value="" placeholder="请选择" id="user_b" name="user_b"> --}}
-			<select name="user_b" id="user_b"  class="input-text">
-			 <option value="">请选择或输入</option>
-			  @foreach($data as $val)
-			  <option value="{{$val->id}}">{{$val->user_name}}</option>
+            <select name="user_name" id="user_name"  placeholder="请选择" class="input-text">
+			  <option value="">请选择</option>
+			  @foreach($user as $val)
+			    <option value="{{$val->user_name}}">{{$val->user_name}}</option>
 			  @endforeach
 			</select>
 		</div>
 	</div>
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>比赛项目：</label>
+		<label class="form-label col-xs-4 col-sm-3">局数：</label>
 		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" value="" placeholder="请输入" id="game_project" name="game_project">
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">比赛国家：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" value="" placeholder="请输入比赛国家" id="state" name="state">
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">比赛城市：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" value="" placeholder="请输入比赛城市" id="city" name="city">
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">公开赛：</label>
-		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" name="show" size="1">
-				<option value="1">是</option>
-				<option value="0">否</option>
+			<select name="class" id="class"  class="input-text">
+			 <option value="">请选择</option>
+			    <option value="1">第一局</option>
+			    <option value="2">第二局</option>
+			    <option value="3">第三局</option>
+			    <option value="4">第四局</option>
+			    <option value="5">第五局</option>
+			    <option value="6">第六局</option>
+			    <option value="7">第七局</option>
 			</select>
-			</span> 
+		</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>总得：</label>
+		<div class="formControls col-xs-3 col-sm-3">
+			<input type="number" class="input-text" value="0"  id="score_first" name="score_first"></input>
+		</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>总失：</label>
+		<div class="formControls col-xs-3 col-sm-3">
+			<input type="number" class="input-text" value="0"  id="score_last" name="score_last"></input>
+		</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3">发接轮次：</label>
+		<div class="formControls col-xs-3 col-sm-3">
+			<label>
+                <input name="send" type="radio" id="send"  value="发" checked>
+                发</label>
+              <label>
+                <input type="radio" name="send" value="接" id="send" >
+                接</label>
+		</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3">拍数：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<select name="bat_number" id="bat_number"  class="input-text">
+			 <option value="">请选择</option>
+			 @foreach($bat_number as $val)
+			  <option value="{{$val->bat_number}}">{{$val->bat_number}}</option>
+			 @endforeach
+			</select>
+		</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3">手段：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<select name="tool" id="tool"  class="input-text">
+			 <option value="">请选择</option>
+			  @foreach($tool as $val)
+			   <option value="{{$val->tool}}">{{$val->tool}}</option>
+			  @endforeach
+			</select>
+		</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3">得失分：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<select name="get_lose" id="get_lose"  class="input-text">
+			 <option value="">请选择</option>
+			 <option value="得">得</option>
+			 <option value="失">失</option>
+			</select>
 		</div>
 	</div>
 	<!-- 加入csrf -->
 	{{csrf_field()}}
 	<div class="row cl">
 		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-			<input class="btn btn-success radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+			<input class="btn btn-success radius" type="submit" value="&nbsp;&nbsp;立即提交&nbsp;&nbsp;">
 			<input class="btn btn-primary radius" type="reset" value="&nbsp;&nbsp;重置&nbsp;&nbsp;">
 		</div>
 	</div>
@@ -126,47 +142,20 @@
 <script type="text/javascript" src="/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script> 
 <script type="text/javascript">
 $(function(){
-	//判断运动员A和B是否是同一个人，是同一人则提示
-	$('#user_b').blur(function(){
-		if($('#user_a').val()==$('#user_b').val()){
-			layer.msg("对手不能是自己，请重新选择",{icon:5,time:2000});
-			$('#user_b').foucs();
-		}
-	});
-	$('#user_a').blur(function(){
-		if($('#user_b').val()==$('#user_a').val()){
-			layer.msg("对手不能是自己，请重新选择",{icon:5,time:2000});
-		}
-	});
-	
 	$("#form-admin-add").validate({
-		rules:{
-			stream_name:{
-				required:true,
-				minlength:4,
-				maxlength:64
-			},
-			status:{
-				required:true,
-			},
-			sort:{
-				required:true,
-			},
-		},
 		onkeyup:false,
 		focusCleanup:true,
 		success:"valid",
 		submitHandler:function(form){
 			$(form).ajaxSubmit({
                 type: 'post',
-				url: "{{route('gameadd')}}" ,	//提交给相应控制器处理
+				url: "{{route('dataadd')}}" ,	//提交给相应控制器处理
 				success: function(data){
 					//判断返回值code
 					if(data.code == '0'){
 						//成功
 						layer.msg(data.msg,{icon:1,time:2000},function(){
 							var index = parent.layer.getFrameIndex(window.name);
-							// parent.$('.btn-refresh').click();
 							parent.location.href = parent.location.href;
 							parent.layer.close(index);
 						});

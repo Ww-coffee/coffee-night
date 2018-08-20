@@ -32,7 +32,7 @@ Route::any('admin/user/update','UserController@update')->name('user_update');
 Route::get('admin/user/delete','UserController@delete')->name('user_delete');
 
 //添加运动员
-Route::any('admin/user/add','UserController@add')->name('useradd');
+Route::any('admin/user/add','UserController@add')->name('user_add');
 
 
 
@@ -40,18 +40,23 @@ Route::any('admin/user/add','UserController@add')->name('useradd');
 //比赛列表
 Route::get('admin/game/index','GameController@index')->name('gameindex');
 //添加比赛
-Route::post('admin/game/add','GameController@add')->name('gameadd');
-
-
+Route::any('admin/game/add','GameController@add')->name('gameadd');
 //修改比赛
 Route::any('admin/game/edit','GameController@edit')->name('gameedit');
 //删除比赛
 Route::get('admin/game/del','GameController@del')->name('gamedel');
 //数据导出导入页面
 Route::get('admin/data/index','DataController@index')->name('updown');
-// //数据导出：下载模板
+//使用webuploader提交文件
+Route::post('admin/uploader/webuploader','UploaderController@webuploader')->name('webuploader');
+//数据导出：下载模板
 Route::get('admin/downdata','DataController@down')->name('downdata');
-// //数据导入：上传数据
-Route::get('admin/updata','DataController@up')->name('updata');
+//数据导入：上传数据
+Route::any('admin/updata','DataController@up')->name('updata');
+//比赛数据添加(局)
+Route::any('admin/dataadd','DataController@add')->name('dataadd');
+// //临时定义:默认跳转前台(搜索页)
+// Route::get('/','SearchController@index')->name("front_index");
+
 
 
